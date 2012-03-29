@@ -1,6 +1,8 @@
 call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
 
+colorscheme zenburn
+
 " Number of spaces that a pre-existing tab is equal to.
 " For the amount of space used for a new tab use shiftwidth.
 au BufRead,BufNewFile *py,*pyw,*.c,*.h set tabstop=8
