@@ -3,27 +3,16 @@ call pathogen#helptags()
 
 colorscheme zenburn
 
+filetype on		" enables filetype detection
+filetype plugin on	" enables filetype specific plugins
+
+"------------Start Python PEP 8 stuff----------------
 " Number of spaces that a pre-existing tab is equal to.
-" For the amount of space used for a new tab use shiftwidth.
 au BufRead,BufNewFile *py,*pyw,*.c,*.h set tabstop=8
 
-" What to use for an indent.
-" This will affect Ctrl-T and 'autoindent'.
-" Python: 4 spaces
-" C: tabs (pre-existing files) or 4 spaces (new files)
+"spaces for indents
 au BufRead,BufNewFile *.py,*pyw set shiftwidth=4
 au BufRead,BufNewFile *.py,*.pyw set expandtab
-fu Select_c_style()
-    if search('^\t', 'n', 150)
-        set shiftwidth=8
-        set noexpandtab
-    el 
-        set shiftwidth=4
-        set expandtab
-    en
-endf
-au BufRead,BufNewFile *.c,*.h call Select_c_style()
-au BufRead,BufNewFile Makefile* set noexpandtab
 
 " Use the below highlight group when displaying bad whitespace is desired.
 highlight BadWhitespace ctermbg=red guibg=red
@@ -52,3 +41,5 @@ filetype indent on
 set autoindent
 "Folding based on indentation:
 set foldmethod=indent
+
+"----------Stop python PEP 8 stuff--------------
