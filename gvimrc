@@ -1,1 +1,0 @@
-set transparency=15
