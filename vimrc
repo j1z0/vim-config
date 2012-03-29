@@ -6,6 +6,13 @@ colorscheme zenburn
 filetype on		" enables filetype detection
 filetype plugin on	" enables filetype specific plugins
 
+let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
+
+"I don't like swap files
+set backupdir=~/.vim/backup/
+set noswapfile
+
+
 "------------Start Python PEP 8 stuff----------------
 " Number of spaces that a pre-existing tab is equal to.
 au BufRead,BufNewFile *py,*pyw,*.c,*.h set tabstop=8
