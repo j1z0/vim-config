@@ -1,7 +1,10 @@
+"package manager for VIM
 call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
 
+"look and feel
 colorscheme zenburn
+set guifont=Monaco:h14
 
 filetype on		" enables filetype detection
 filetype plugin on	" enables filetype specific plugins
@@ -12,10 +15,13 @@ let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
 set backupdir=~/.vim/backup/
 set noswapfile
 
+:set tags=~/mytags	"tags for ctags and taglist
+"omnicomplete
+autocmd FileType python set omnifunc=pythoncomplete#Complete
 
 "------------Start Python PEP 8 stuff----------------
 " Number of spaces that a pre-existing tab is equal to.
-au BufRead,BufNewFile *py,*pyw,*.c,*.h set tabstop=8
+au BufRead,BufNewFile *py,*pyw,*.c,*.h set tabstop=4
 
 "spaces for indents
 au BufRead,BufNewFile *.py,*pyw set shiftwidth=4
@@ -48,5 +54,16 @@ filetype indent on
 set autoindent
 "Folding based on indentation:
 set foldmethod=indent
-
+"use space to open folds
+nnoremap <space> za	
 "----------Stop python PEP 8 stuff--------------
+"
+"Get the python from the current virtualenv
+:python << EOF
+import os
+virtualenv = os.environ.get('VIRTUAL_ENV')
+if virtualenv:
+    activate_this = os.path.join(virtualenv, 'bin', 'activate_this.py')
+if os.path.exists(activate_this):
+    execfile(activate_this, dict(__file__=activate_this))
+EOF
