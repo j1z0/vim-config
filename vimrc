@@ -2,17 +2,19 @@
 call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
 
+filetype off
+syntax on
+filetype plugin indent on		" enables filetype detection
+
 "look and feel
-"syntax enable
-"set background=dark
-"colorscheme solarized
-colorscheme zenburn
+set background=dark
+colorscheme solarized
+call togglebg#map("<F5>")
+"colorscheme zenburn
 set guifont=Monaco:h14
 
-filetype on		" enables filetype detection
-filetype plugin on	" enables filetype specific plugins
-
 let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
+
 
 "I don't like swap files
 set backupdir=~/.vim/backup/
