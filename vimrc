@@ -26,6 +26,7 @@ au BufRead,BufNewFile *py,*pyw,*.c,*.h set tabstop=4
 "spaces for indents
 au BufRead,BufNewFile *.py,*pyw set shiftwidth=4
 au BufRead,BufNewFile *.py,*.pyw set expandtab
+au BufRead,BufNewFile *.py set softtabstop=4
 
 " Use the below highlight group when displaying bad whitespace is desired.
 highlight BadWhitespace ctermbg=red guibg=red
@@ -51,19 +52,15 @@ syntax on
 " Automatically indent based on file type:
 filetype indent on
 " Keep indentation level from previous line:
-set autoindent
+autocmd FileType python set autoindent
+" make backspaces more powerfull
+"set backspace=indent,eol,start
+
+
 "Folding based on indentation:
 set foldmethod=indent
 "use space to open folds
 nnoremap <space> za	
 "----------Stop python PEP 8 stuff--------------
 "
-"Get the python from the current virtualenv
-:python << EOF
-import os
-virtualenv = os.environ.get('VIRTUAL_ENV')
-if virtualenv:
-    activate_this = os.path.join(virtualenv, 'bin', 'activate_this.py')
-if os.path.exists(activate_this):
-    execfile(activate_this, dict(__file__=activate_this))
-EOF
+
