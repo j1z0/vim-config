@@ -3,6 +3,9 @@ call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
 
 "look and feel
+"syntax enable
+"set background=dark
+"colorscheme solarized
 colorscheme zenburn
 set guifont=Monaco:h14
 
