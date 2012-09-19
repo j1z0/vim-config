@@ -63,7 +63,7 @@ autocmd FileType python set autoindent
 
 
 "Folding based on indentation:
-set foldmethod=indent
+autocmd FileType python set foldmethod=indent
 "use space to open folds
 nnoremap <space> za	
 "----------Stop python PEP 8 stuff--------------
