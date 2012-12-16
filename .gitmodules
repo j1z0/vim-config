@@ -13,3 +13,9 @@
 [submodule "bundle/vim-flake8"]
 	path = bundle/vim-flake8
 	url = https://github.com/nvie/vim-flake8.git
+[submodule "bundle/markdown-preview"]
+	path = bundle/markdown-preview
+	url = https://github.com/mkitt/markdown-preview.vim.git
+[submodule "bundle/vim_instant-markdown"]
+	path = bundle/vim_instant-markdown
+	url = https://github.com/suan/vim-instant-markdown.git

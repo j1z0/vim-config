@@ -69,3 +69,5 @@ nnoremap <space> za
 "----------Stop python PEP 8 stuff--------------
 "
 
+"markdown handling stuff"
+let g:MarkdownPreviewTMP = $HOME.'/dotfiles/vim/bundle/markdown-preview/tmp'
