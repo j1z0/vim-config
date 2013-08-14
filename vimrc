@@ -2,15 +2,14 @@
 call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
 
-filetype off
 syntax on
 filetype plugin indent on		" enables filetype detection
 
 "look and feel
 set background=dark
-colorscheme solarized
+"colorscheme solarized
 call togglebg#map("<F5>")
-"colorscheme zenburn
+colorscheme zenburn
 set guifont=Monaco:h14
 
 let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
