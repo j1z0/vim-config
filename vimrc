@@ -6,14 +6,14 @@ set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
 Bundle 'gmarik/vundle'
-Bundle 'tpope/vim-figutive'
+Bundle 'tpope/vim-fugitive'
+Bundle 'scrooloose/nerdtree'
+Bundle 'jistr/vim-nerdtree-tabs'
+Bundle 'isnowfy/python-vim-instant-markdown'
+Bundle 'nvie/vim-flake8'
+Bundle 'altercation/vim-colors-solarized'
+Bundle 'davidhalter/jedi-vim'
 
-
-"package manager for VIM
-"call pathogen#runtime_append_all_bundles()
-"call pathogen#helptags()
-"filetype off
-"syntax on
 filetype plugin indent on		" enables filetype detection
 
 "look and feel
