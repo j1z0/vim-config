@@ -1,8 +1,19 @@
-"package manager for VIM
-call pathogen#runtime_append_all_bundles()
-call pathogen#helptags()
+"vundle
+set nocompatible
+filetype off
 
-syntax on
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+Bundle 'gmarik/vundle'
+Bundle 'tpope/vim-figutive'
+
+
+"package manager for VIM
+"call pathogen#runtime_append_all_bundles()
+"call pathogen#helptags()
+"filetype off
+"syntax on
 filetype plugin indent on		" enables filetype detection
 
 "look and feel
@@ -53,8 +64,6 @@ set encoding=utf-8
 let python_highlight_all=1
 syntax on
 
-" Automatically indent based on file type:
-filetype indent on
 " Keep indentation level from previous line:
 autocmd FileType python set autoindent
 " make backspaces more powerfull
