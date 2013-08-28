@@ -6,15 +6,39 @@ set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
 Bundle 'gmarik/vundle'
+"git interface
 Bundle 'tpope/vim-fugitive'
+"filesystem
 Bundle 'scrooloose/nerdtree'
 Bundle 'jistr/vim-nerdtree-tabs'
-Bundle 'isnowfy/python-vim-instant-markdown'
-Bundle 'nvie/vim-flake8'
-Bundle 'altercation/vim-colors-solarized'
-Bundle 'davidhalter/jedi-vim'
+Bundle 'kien/ctrlp.vim' 
 
+"html
+Bundle 'isnowfy/python-vim-instant-markdown'
+"python sytax checker
+Bundle 'nvie/vim-flake8'
+"Bundle 'vim-scripts/Pydiction'
+Bundle 'vim-scripts/indentpython.vim'
+Bundle 'scrooloose/syntastic'
+"color
+Bundle 'altercation/vim-colors-solarized'
+"auto-completion stuff
+"Bundle 'klen/python-mode'
+Bundle 'Valloric/YouCompleteMe'
+"Bundle 'klen/rope-vim'
+"Bundle 'davidhalter/jedi-vim'
+"Bundle 'ervandew/supertab'
+"code folding
+Bundle 'tmhedberg/SimpylFold'
 filetype plugin indent on		" enables filetype detection
+let g:SimpylFold_docstring_preview = 1
+
+"autocomplete
+let g:ycm_autoclose_preview_window_after_completion=1
+
+"custom keys
+let mapleader=" "
+map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 "look and feel
 set background=dark
@@ -30,9 +54,25 @@ let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
 set backupdir=~/.vim/backup/
 set noswapfile
 
-:set tags=~/mytags	"tags for ctags and taglist
+"turn on numbering
+set nu
+
+"python with virtualenv support
+py << EOF
+import os.path
+import sys
+import vim
+if 'VIRTUA_ENV' in os.environ:
+	project_base_dir = os.environ['VIRTUAL_ENV']
+	sys.path.insert(0, project_base_dir)
+	activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
+	execfile(activate_this, dict(__file__=activate_this))
+EOF
+
+"it would be nice to set tag files by the active virtualenv here
+":set tags=~/mytags	"tags for ctags and taglist
 "omnicomplete
-autocmd FileType python set omnifunc=pythoncomplete#Complete
+"autocmd FileType python set omnifunc=pythoncomplete#Complete
 
 "------------Start Python PEP 8 stuff----------------
 " Number of spaces that a pre-existing tab is equal to.
@@ -71,7 +111,7 @@ autocmd FileType python set autoindent
 
 
 "Folding based on indentation:
-autocmd FileType python set foldmethod=indent
+"autocmd FileType python set foldmethod=indent
 "use space to open folds
 nnoremap <space> za	
 "----------Stop python PEP 8 stuff--------------
