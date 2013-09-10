@@ -14,7 +14,10 @@ Bundle 'jistr/vim-nerdtree-tabs'
 Bundle 'kien/ctrlp.vim' 
 
 "html
-Bundle 'isnowfy/python-vim-instant-markdown'
+"Bundle 'isnowfy/python-vim-instant-markdown'
+Bundle 'jtratner/vim-flavored-markdown'
+Bundle 'suan/vim-instant-markdown'
+Bundle 'nelstrom/vim-markdown-preview'
 "python sytax checker
 Bundle 'nvie/vim-flake8'
 "Bundle 'vim-scripts/Pydiction'
@@ -30,6 +33,11 @@ Bundle 'Valloric/YouCompleteMe'
 "Bundle 'ervandew/supertab'
 "code folding
 Bundle 'tmhedberg/SimpylFold'
+
+"Colors!!!
+Bundle 'altercation/vim-colors-solarized'
+Bundle 'jnurmine/Zenburn'
+
 filetype plugin indent on		" enables filetype detection
 let g:SimpylFold_docstring_preview = 1
 
@@ -41,17 +49,22 @@ let mapleader=" "
 map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 "look and feel
-set background=dark
-"colorscheme solarized
+if has('gui_running')
+  set background=dark
+  colorscheme solarized
+else
+  colorscheme Zenburn
+endif
+
 call togglebg#map("<F5>")
-colorscheme zenburn
-set guifont=Monaco:h14
+"colorscheme zenburn
+"set guifont=Monaco:h14
 
 let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
 
 
 "I don't like swap files
-set backupdir=~/.vim/backup/
+set backupdir=~/dotfiles/vim/backup/
 set noswapfile
 
 "turn on numbering
@@ -76,7 +89,7 @@ EOF
 
 "------------Start Python PEP 8 stuff----------------
 " Number of spaces that a pre-existing tab is equal to.
-au BufRead,BufNewFile *py,*pyw,*.c,*.h set tabstop=4
+"au BufRead,BufNewFile *py,*pyw,*.c,*.h set tabstop=4
 
 "spaces for indents
 au BufRead,BufNewFile *.py,*pyw set shiftwidth=4
@@ -87,7 +100,7 @@ au BufRead,BufNewFile *.py set softtabstop=4
 highlight BadWhitespace ctermbg=red guibg=red
 
 " Display tabs at the beginning of a line in Python mode as bad.
-au BufRead,BufNewFile *.py,*.pyw match BadWhitespace /^\t\+/
+"au BufRead,BufNewFile *.py,*.pyw match BadWhitespace /^\t\+/
 " Make trailing whitespace be flagged as bad.
 au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
 
@@ -106,8 +119,9 @@ syntax on
 
 " Keep indentation level from previous line:
 autocmd FileType python set autoindent
+
 " make backspaces more powerfull
-"set backspace=indent,eol,start
+set backspace=indent,eol,start
 
 
 "Folding based on indentation:
@@ -115,7 +129,7 @@ autocmd FileType python set autoindent
 "use space to open folds
 nnoremap <space> za	
 "----------Stop python PEP 8 stuff--------------
-"
 
-"markdown handling stuff"
-let g:MarkdownPreviewTMP = $HOME.'/dotfiles/vim/bundle/markdown-preview/tmp'
+"js stuff"
+autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
+
